@@ -9,8 +9,8 @@ def pytest_addoption(parser):
     parser.addoption(
         "--browser_name", action="store", default="chrome"
     )
-   # parser.addoption("--username", action="store", help="input useranme")
-   #parser.addoption("--password", action="store", help="input password")
+    parser.addoption("--username", action="store", help="input useranme")
+    parser.addoption("--password", action="store", help="input password")
 
 
 @pytest.fixture(scope="class")
@@ -26,19 +26,17 @@ def setup(request):
         s = Service(TestData.fireFox_executablepath)
         driver = webdriver.Firefox(service=s)
 
-
     driver.get(TestData.baseUrl)
     driver.maximize_window()
-
     request.cls.driver = driver
     yield
     driver.quit()
 
-'''@pytest.fixture
+@pytest.fixture
 def params(request):
     params = {}
     params['username'] = request.config.getoption('--username')
     params['password'] = request.config.getoption('--password')
     if params['username'] is None and params['password'] is None:
         pytest.skip()
-    return params'''
+    return params

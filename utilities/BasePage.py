@@ -1,12 +1,14 @@
 import inspect
 import logging
+from imghdr import tests
 
 import pytest
+from _pytest import reports
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-@pytest.mark.usefixtures("setup")
+@pytest.mark.usefixtures("setup", "params")
 class BasePage:
     def wait_presence(self, path):
         wait = WebDriverWait(self.driver, 10)
@@ -25,3 +27,4 @@ class BasePage:
         filehandler.setFormatter(formatter)
         logger.setLevel(logging.INFO)
         logger.info(message)
+
