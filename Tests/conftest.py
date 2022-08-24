@@ -11,7 +11,7 @@ def pytest_addoption(parser):
     )
     parser.addoption("--username", action="store", help="input useranme")
     parser.addoption("--password", action="store", help="input password")
-    parser.addoption("--html=", action="store", help="html")
+
 
 
 @pytest.fixture(scope="class")
@@ -38,7 +38,6 @@ def params(request):
     params = {}
     params['username'] = request.config.getoption('--username')
     params['password'] = request.config.getoption('--password')
-    params['html'] = request.config.getoption('--html=')
     if params['username'] is None and params['password'] is None:
         pytest.skip()
     return params
