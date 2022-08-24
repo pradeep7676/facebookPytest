@@ -1,9 +1,11 @@
 import inspect
 import logging
+import time
 from imghdr import tests
 
 import pytest
 from _pytest import reports
+from py import log
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -28,3 +30,12 @@ class BasePage:
         logger.setLevel(logging.INFO)
         logger.info(message)
 
+    def waiting_until_item_enabled(self, item, time_out=30, interval_unit=0.5):
+        end_time = time.time() + time_out
+        self.message_logging(f"{item} : is Waiting for Enable")
+        while time.time() < end_time and not item.is_enabled():
+            time.sleep(interval_unit)
+
+        if time.time() > end_time:
+            log.debug(f"{item} : is not enable error")
+            raise TimeoutError()

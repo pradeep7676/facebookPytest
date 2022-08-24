@@ -24,6 +24,7 @@ class Test_e2e(BasePage):
         '''to enter username and password through terminal'''
         login_page.user_name().send_keys(params['username'])
         login_page.password().send_keys(params['password'])
+        self.waiting_until_item_enabled( login_page.login_button())
         login_page.login_button().click()
         self.message_logging("login successfully")
 
@@ -63,6 +64,7 @@ class Test_e2e(BasePage):
         time.sleep(2)
         '''to verify phone number'''
         number = setting_page.click_number_verify().text
+        self.message_logging(number)
         assert number == TestData.NUMBER_VERIFY
         self.driver.back()
         self.message_logging("mobile number verified successfully")
