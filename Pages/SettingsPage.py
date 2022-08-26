@@ -24,15 +24,19 @@ class SettingsPage(BasePage):
         self.driver = driver
 
     def click_account(self):
+        self.wait_clickable(SettingsPage.ACCOUNT)
         return self.driver.find_element(*SettingsPage.ACCOUNT)
 
     def click_settings_privacy(self):
+        self.wait_clickable(SettingsPage.SETTING_PRIVACY)
         return self.driver.find_element(*SettingsPage.SETTING_PRIVACY)
 
     def click_setting(self):
+        self.wait_clickable(SettingsPage.SETTING)
         return self.driver.find_element(*SettingsPage.SETTING)
 
     def click_privacy(self):
+        self.wait_clickable(SettingsPage.PRIVACY)
         return self.driver.find_element(*SettingsPage.PRIVACY)
 
     def click_manage_profile(self):
@@ -44,16 +48,21 @@ class SettingsPage(BasePage):
         return self.driver.find_element(*SettingsPage.NUMBER_VERIFY)
 
     def click_blocking(self):
+        self.wait_clickable(SettingsPage.BLOCKING)
         return self.driver.find_element(*SettingsPage.BLOCKING)
 
     def click_edit(self):
+        self.wait_clickable(SettingsPage.EDIT)
         return self.driver.find_element(*SettingsPage.EDIT)
 
     def click_blockedList(self):
+        self.wait_clickable(SettingsPage.BLOCKEDLIST)
         return self.driver.find_element(*SettingsPage.BLOCKEDLIST)
 
     def blocks(self):
+        self.wait_presence(SettingsPage.TOTAL_NO_BLOCKS)
         return self.driver.find_elements(*SettingsPage.TOTAL_NO_BLOCKS)
 
     def close_list(self):
+        self.wait_clickable(SettingsPage.CLOSE_LIST)
         return self.driver.find_element(*SettingsPage.CLOSE_LIST)

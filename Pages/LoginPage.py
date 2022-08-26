@@ -1,7 +1,9 @@
 from selenium.webdriver.common.by import By
 
+from utilities.BasePage import BasePage
 
-class LoginPage:
+
+class LoginPage(BasePage):
 
     '''locators'''
     USER_NAME = (By.ID, "email")
@@ -12,12 +14,15 @@ class LoginPage:
         self.driver = driver
 
     def user_name(self):
+        self.wait_presence(LoginPage.USER_NAME)
         return self.driver.find_element(*LoginPage.USER_NAME)
 
     def password(self):
+        self.wait_presence(LoginPage.PASSWORD)
         return self.driver.find_element(*LoginPage.PASSWORD)
 
     def login_button(self):
+        self.wait_clickable(LoginPage.LOGIN_BUTTON)
         return self.driver.find_element(*LoginPage.LOGIN_BUTTON)
 
 

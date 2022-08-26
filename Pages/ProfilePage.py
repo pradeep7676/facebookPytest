@@ -1,6 +1,9 @@
 from selenium.webdriver.common.by import By
 
-class ProfilePage:
+from utilities.BasePage import BasePage
+
+
+class ProfilePage(BasePage):
     '''locators'''
     PROFILE_NAME = (By.XPATH,"//span[text()='Pradeep Reddy']")
 
@@ -8,4 +11,5 @@ class ProfilePage:
         self.driver = driver
 
     def profile_name(self):
+        self.wait_presence(ProfilePage.PROFILE_NAME)
         return self.driver.find_element(*ProfilePage.PROFILE_NAME)

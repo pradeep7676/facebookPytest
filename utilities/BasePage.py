@@ -32,7 +32,7 @@ class BasePage:
 
     def waiting_until_item_enabled(self, item, time_out=30, interval_unit=0.5):
         end_time = time.time() + time_out
-        self.message_logging(f"{item} : is Waiting for Enable")
+        #self.message_logging(f"{item} : is Waiting for Enable")
         while time.time() < end_time and not item.is_enabled():
             time.sleep(interval_unit)
 
