@@ -16,7 +16,6 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="class")
 def setup(request):
-    global driver
     browser_name = request.config.getoption("browser_name")
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--ignore-certificate-error')
